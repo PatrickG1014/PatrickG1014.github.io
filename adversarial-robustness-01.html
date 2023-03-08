@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc49486e5-164f-4134-bbc3-38b63f2d4058%2FAA238E8485C55D168DCF034BC7482B61.png?table=collection&amp;id=c97ea4eb-3d30-4977-8edc-ee98d0f07149">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+
+  <title>[Adversarial Robustness] 1 Introduction to adversarial robustness&nbsp;|&nbsp;Patrick’s Blog</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="[Adversarial Robustness] 1 Introduction to adversarial robustness">
+  
+    <meta name="description" content="翻译自 https://adversarial-ml-tutorial.org/">
+    <meta property="og:description" content="翻译自 https://adversarial-ml-tutorial.org/">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🍵&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc49486e5-164f-4134-bbc3-38b63f2d4058%2FAA238E8485C55D168DCF034BC7482B61.png?table=collection&amp;id=c97ea4eb-3d30-4977-8edc-ee98d0f07149"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;😀&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About me</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="categories.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📃&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Categories</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🍵&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">[Adversarial Robustness] 1 Introduction to adversarial robustness</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Wed, Mar 8, 2023</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/📖Note.html">📖Note</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--green">
+            <a href="tag/Robustness.html">Robustness</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/1f6c52dc204140b5a0637335e2c2884d" class="PageRoot"><h2 id="https://www.notion.so/3a80289c0146460c9e0ff40ac6d424c5" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/3a80289c0146460c9e0ff40ac6d424c5"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">介绍</span></span></h2><div id="https://www.notion.so/e6e00fa93d8f4d27844cb8befd1cc256" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">对抗鲁棒性 (adversarial robustness)</strong></span><span class="SemanticString">：我们能否开发出对输入的（测试时）扰动鲁棒的分类器，而这些扰动是由意图欺骗分类器的敌人产生的。</span></span></p></div><h3 id="https://www.notion.so/49e9d4c5d3dd46c9a2d8a67bfb26bb41" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/49e9d4c5d3dd46c9a2d8a67bfb26bb41"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">准备工作</span></span></h3><div id="https://www.notion.so/e1c3923cc19f41e5827ccd542b3af76e" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Python 3.7</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/7c7851d3e1154681b49dca6f050fcd19" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">pytorch 1.0</span></span></li><li id="https://www.notion.so/f23c0e3f3795459caf3d553ebb72800d" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">cvxpy 1.0</span></span></li><li id="https://www.notion.so/46bce7302b164e419687564b4cace6c4" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">numpy/scipy/PIL/etc</span></span></li></ul><h3 id="https://www.notion.so/290aca8d7cf84ffd9db8879f4b946678" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/290aca8d7cf84ffd9db8879f4b946678"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">需要的背景知识</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/7c69c54e85d74b8dbf6f6ce677f5d520" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.deeplearningbook.org/">Deep Learning Book</a></span></span></li><li id="https://www.notion.so/70bfef465549446491714f7935a49a53" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://pytorch.org/tutorials/">PyTorch Tutorials</a></span></span></li></ul><h2 id="https://www.notion.so/6775b1e8ab6a42ee8dedc909d7060e67" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/6775b1e8ab6a42ee8dedc909d7060e67"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">深入</span></span></h2><div id="https://www.notion.so/c8030a093e0e4feb955410d224c17514" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">首先，我们使用 PyTorch 中（预训练的）ResNet50 模型来分类猪的这张图片。</span></span></p></div><div id="https://www.notion.so/c274edec75454a318aad6929e27c92cd" class="Image Image--Normal"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6e3d8c09-ce53-47a0-820d-f3fed45841fa%2FUntitled.png?width=400&amp;table=block&amp;id=c274edec-7545-4a31-8aad-6929e27c92cd"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6e3d8c09-ce53-47a0-820d-f3fed45841fa%2FUntitled.png?width=400&amp;table=block&amp;id=c274edec-7545-4a31-8aad-6929e27c92cd" style="width:400px"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><div id="https://www.notion.so/5b75450ffacc49908a191f5940322c47" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">PyTorch 中正常的图像分类策略是首先使用</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">torchvision.transforms</code></span><span class="SemanticString">模块对图像进行变换（至近似 0 均值，单位方差）。然而，因为我们想要在原来的（非标准化的）图像空间制造扰动，我们会用一个稍微不同的方法，实际上在 PyTorch 层上构建变换，以便我们可以直接输入图像。首先，让我们加载这张图像并调整大小为 224x224，即大多数 ImageNet 图像用作输入的默认大小（因此是预训练分类器）。</span></span></p></div><pre id="https://www.notion.so/9b88f9879a84411286dee65a76b1cb84" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+<span class="token keyword">from</span> torchvision <span class="token keyword">import</span> transforms
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+<span class="token comment"># read the image, resize to 224 and convert to PyTorch Tensor</span>
+pig_img <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"pig.jpg"</span><span class="token punctuation">)</span>
+preprocess <span class="token operator">=</span> transforms<span class="token punctuation">.</span>Compose<span class="token punctuation">(</span><span class="token punctuation">[</span>
+    transforms<span class="token punctuation">.</span>Resize<span class="token punctuation">(</span><span class="token number">224</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    transforms<span class="token punctuation">.</span>ToTensor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+pig_tensor <span class="token operator">=</span> preprocess<span class="token punctuation">(</span>pig_img<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+
+<span class="token comment"># plot image (note that numpy uses HWC whereas Pytorch uses CHW, so we need to convert)</span>
+plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>pig_tensor<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>numpy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span></span></span></code></pre><div id="https://www.notion.so/32e67d994ce848179b202f1a6347f4ba" class="Image Image--Normal"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02e815ec-05fb-445c-af3a-cea263bfdfb9%2FUntitled.png?width=349&amp;table=block&amp;id=32e67d99-4ce8-4817-9b20-2f1a6347f4ba"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02e815ec-05fb-445c-af3a-cea263bfdfb9%2FUntitled.png?width=349&amp;table=block&amp;id=32e67d99-4ce8-4817-9b20-2f1a6347f4ba" style="width:349px"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><div id="https://www.notion.so/a4e6f46d58d743e98a9ee465c3340df5" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">现在让我们在必要的变换后加载预训练的 ResNet50 模型并将它应用到图像上（这里奇怪的索引只是用于遵循 PyTorch 标准，模块的所有输入应该是</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">batch_size x num_channels x height x weight</code></span><span class="SemanticString">的形式）。</span></span></p></div><pre id="https://www.notion.so/e87422cc1cb4446b842229a6d2ec7e2a" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token keyword">import</span> torch
+<span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
+<span class="token keyword">from</span> torchvision<span class="token punctuation">.</span>models <span class="token keyword">import</span> resnet50
+
+<span class="token comment"># simple Module to normalize an image</span>
+<span class="token keyword">class</span> <span class="token class-name">Normalize</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> mean<span class="token punctuation">,</span> std<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>Normalize<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>mean <span class="token operator">=</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">(</span>mean<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>std <span class="token operator">=</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">(</span>std<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> self<span class="token punctuation">.</span>mean<span class="token punctuation">.</span>type_as<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span> self<span class="token punctuation">.</span>std<span class="token punctuation">.</span>type_as<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span>
+
+<span class="token comment"># values are standard normalization for ImageNet images,</span>
+<span class="token comment"># from https://github.com/pytorch/examples/blob/master/imagenet/main.py</span>
+norm <span class="token operator">=</span> Normalize<span class="token punctuation">(</span>mean<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0.485</span><span class="token punctuation">,</span> <span class="token number">0.456</span><span class="token punctuation">,</span> <span class="token number">0.406</span><span class="token punctuation">]</span><span class="token punctuation">,</span> std<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0.229</span><span class="token punctuation">,</span> <span class="token number">0.224</span><span class="token punctuation">,</span> <span class="token number">0.225</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment"># load pre-trained ResNet50, and put into evaluation mode (necessary to e.g. turn off batchnorm)</span>
+model <span class="token operator">=</span> resnet50<span class="token punctuation">(</span>pretrained<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+model<span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span></span></span></code></pre><pre id="https://www.notion.so/0fe8833f3a0b431a97715337d375b438" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token comment"># form predictions</span>
+pred <span class="token operator">=</span> model<span class="token punctuation">(</span>norm<span class="token punctuation">(</span>pig_tensor<span class="token punctuation">)</span><span class="token punctuation">)</span></span></span></span></code></pre><div id="https://www.notion.so/269df6956b584ef8bc1b45450f66aeb8" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">pred</code></span><span class="SemanticString">现在有一个 1000 维的向量，包含 1000 个 imagenet 类别的 logit 值（即如果你想要把它转换成一个概率向量，你应该对这个向量使用 softmax 运算）。为了找到最大似然的类，我们简单地取这个向量中最大值的索引，并且在 imagenet 类的列表中查找该索引来找到对应的标签。</span></span></p></div><pre id="https://www.notion.so/f765c3bf457d481e8de6117f4c65970f" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token keyword">import</span> json
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"imagenet_class_index.json"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    imagenet_classes <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token builtin">int</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">for</span> i<span class="token punctuation">,</span> x <span class="token keyword">in</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>imagenet_classes<span class="token punctuation">[</span>pred<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span>dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span></span></span></span></code></pre><blockquote id="https://www.notion.so/03f9aeea86724a7bb5dd55cb9ea671af" class="ColorfulBlock ColorfulBlock--BgGray Quote"><span class="SemanticStringArray"><span class="SemanticString">hog</span></span></blockquote><div id="https://www.notion.so/4f809c3a68634ca888732d9cf044308b" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">成功识别出该图像是猪。</span></span></p></div><h3 id="https://www.notion.so/a89e86f2ee68479fac4e0118cb8b77ca" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/a89e86f2ee68479fac4e0118cb8b77ca"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">一些介绍的符号</span></span></h3><div id="https://www.notion.so/0d02b4a9655c450284501cdd65e3f6f3" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">现在我们尝试欺骗这个分类器把这张图像识别为其他东西。为了解释这一过程，我们要介绍一些符号。具体来说，我们会定义模型，或假设函数，</span><span class="SemanticString"><span class="SemanticString__Fragment SemanticString__Fragment--Math" data-latex="h_\theta:\mathcal{X}\rightarrow\mathbb{R}^k"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>θ</mi></msub><mo>:</mo><mi mathvariant="script">X</mi><mo>→</mo><msup><mi mathvariant="double-struck">R</mi><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">h_\theta:\mathcal{X}\rightarrow\mathbb{R}^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.14643em;">X</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">R</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="SemanticString"> 为从输入空间（上例中是一个三维的张量）到输出空间的映射。输出空间是一个 </span><span class="SemanticString"><span class="SemanticString__Fragment SemanticString__Fragment--Math" data-latex="k"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span></span></span><span class="SemanticString"> 维的向量，其中 </span><span class="SemanticString"><span class="SemanticString__Fragment SemanticString__Fragment--Math" data-latex="k"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span></span></span><span class="SemanticString"> 是正被预测的类的数量。注意像我们上面的模型，输出对应于 logit 空间，所以这些实数可正可负。</span><span class="SemanticString"><span class="SemanticString__Fragment SemanticString__Fragment--Math" data-latex="\theta"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span></span></span></span></span><span class="SemanticString"> 向量表示所有定义这个模型的参数（即所有的卷积滤波器，全连接层权重矩阵，偏差等等），</span><span class="SemanticString"><span class="SemanticString__Fragment SemanticString__Fragment--Math" data-latex="\theta"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span></span></span></span></span><span class="SemanticString"> 参数是当我们训练一个神将网络的时候通常去优化的。最后，注意这个 </span><span class="SemanticString"><span class="SemanticString__Fragment SemanticString__Fragment--Math" data-latex="h_\theta"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>θ</mi></msub></mrow><annotation encoding="application/x-tex">h_\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></span><span class="SemanticString"> 恰好对应于上面 Python 代码的</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">model</code></span><span class="SemanticString">对象。</span></span></p></div><div id="https://www.notion.so/7728a59dbfe346069989c44f93712b2f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">其次，我们定义一个损失函数 </span><span class="SemanticString"><span class="SemanticString__Fragment SemanticString__Fragment--Math" data-latex="\ell:\mathbb{R}^k\times\mathbb{Z}_+\rightarrow\mathbb{R}_+"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">ℓ</mi><mo>:</mo><msup><mi mathvariant="double-struck">R</mi><mi>k</mi></msup><mo>×</mo><msub><mi mathvariant="double-struck">Z</mi><mo>+</mo></msub><mo>→</mo><msub><mi mathvariant="double-struck">R</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">\ell:\mathbb{R}^k\times\mathbb{Z}_+\rightarrow\mathbb{R}_+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">ℓ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.932438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">R</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.897221em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">Z</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.25833100000000003em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.897221em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">R</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.25833100000000003em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span></span></span><span class="SemanticString"> 为一个从模型预测和真实标签到一个非负数的映射。这个损失函数的语义是</span></span></p></div></article>
+  <footer class="Footer">
+  <div>&copy; Patrick’s Blog 2022</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+</body>
+
+</html>
