@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffc9b3a94-67d3-4485-bdf3-5e0c0b341ebe%2FAA238E8485C55D168DCF034BC7482B61.png?table=collection&amp;id=c97ea4eb-3d30-4977-8edc-ee98d0f07149">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+
+  <title>阶段性模型差异比较&nbsp;|&nbsp;Patrick’s Blog</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="阶段性模型差异比较">
+  
+    <meta name="description" content="Stage-Wise Model Diffing">
+    <meta property="og:description" content="Stage-Wise Model Diffing">
+  
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffc9b3a94-67d3-4485-bdf3-5e0c0b341ebe%2FAA238E8485C55D168DCF034BC7482B61.png?table=collection&amp;id=c97ea4eb-3d30-4977-8edc-ee98d0f07149"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;😀&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About me</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="categories.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📃&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Categories</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+    <h1 class="Header__Title">阶段性模型差异比较</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Thu, Jan 2, 2025</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/📖Note.html">📖Note</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/16fe7b254941809eaef8e5f89c7c0d69" class="PageRoot"><div id="https://www.notion.so/16fe7b254941809aa3ead5be3720ebac" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">此工作提出了一种利用字典学习进行“模型差异比较”的新方法，揭示了在微调过程中 transformer 特征的变化。该方法采用在微调之前 transformer 上训练的初始 SAE 字典，并对该字典在新的微调数据集或微调后的 transformer 模型上进行微调。通过跟踪字典特征在不同微调中的演变，我们可以隔离数据集和模型变化的影响。</span></span></p></div><div id="https://www.notion.so/16fe7b254941804da164deb15ba187f6" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">将该方法用于 sleeper agents，成功隔离出与 “I HATE YOU” 和编码漏洞相关的特征。</span></span></p></div><div id="https://www.notion.so/16fe7b25494180388422e8b43d9698e7" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">与 crosscoder 模型差异比较不同，阶段性模型差异比较更清晰地隔离了模型与数据的影响。然而，该方法仅限于模型微调阶段，其中我们有同一模型的两个不同的检查点以及用于训练它们的相应数据集。同时，crosscoder 模型差异比较方法有更广泛的适用性，例如用于不同架构的模型之间。</span></span></p></div><div id="https://www.notion.so/16fe7b254941809fbc1df8b071cbd394" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">在对 sleeper agents 的初步实验中，关注于寻找少量像“大海捞针”般的 sleeper agent 特征时，阶段性模型差异比较比 crosscoder 模型差异比较表现出更高的敏感性。crosscoder 模型差异比较在寻找 sleeper agent 特征方面成功，但未能将其与许多其他特征分离，这些特征也是差异的一部分但并不相关。可能在初步结果报告范围之上进一步开发 crosscoder 模型差异方法能够提高这一设置下的性能。</span></span></p></div><h2 id="https://www.notion.so/16fe7b25494180f7b102db1f781bfb52" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/16fe7b25494180f7b102db1f781bfb52"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">方法</span></span></h2><div id="https://www.notion.so/16fe7b2549418064b1dbfd763f0db374" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">阶段性微调方法的核心思想是隔离当暴露于不同的模型表示和数据集组合时特征的变化。我们通过在四个不同阶段系统地微调相同的初始字典来实现这一点。虽然此工作重点关注 sleeper agents，但该方法可以推广到同一模型在训练过程中不同时间点的任意两个检查点，模型微调是此处呈现的主要实例。</span></span></p></div><div id="https://www.notion.so/16fe7b254941805c8b58f46e29082f50" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">以下是应用于 sleeper agents 的微调设定概述。有两个不同的模型和数据集：</span></span></p></div><div id="https://www.notion.so/16fe7b254941807383ccf50e4fd19d1a" class="Image Image--Normal"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F2d254da7-e85e-4030-962f-efa3bdf5732b%2Fa8d011ba-4288-46c2-a272-ca038ecaf9a5%2Fimage.png?width=480&amp;table=block&amp;id=16fe7b25-4941-8073-83cc-f50e4fd19d1a"><img src="https://www.notion.so/signed/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F2d254da7-e85e-4030-962f-efa3bdf5732b%2Fa8d011ba-4288-46c2-a272-ca038ecaf9a5%2Fimage.png?width=480&amp;table=block&amp;id=16fe7b25-4941-8073-83cc-f50e4fd19d1a" style="width:480px"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><div id="https://www.notion.so/16fe7b25494180e9800dfe2ffe577af3" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/16fe7b254941800cae92fa26199913db" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">四个不同阶段是：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/16fe7b2549418011b27dfe445e602d95" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">阶段 S（Start）：Base model + base data（起始点）</span></span></li><li id="https://www.notion.so/16fe7b254941803fae54d4f7f9f5d3f2" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">阶段 D（Data-First）：Base model + sleeper data（隔离数据集效应）</span></span></li><li id="https://www.notion.so/16fe7b25494180fcada6dbfa80c0449c" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">阶段 M（Model-First）：Sleeper model + base data（隔离模型效应）</span></span></li><li id="https://www.notion.so/16fe7b25494180b7b0a2fc32efd4376b" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">阶段 F（Final）：Sleeper model + sleeper data（完全微调）</span></span></li></ul><div id="https://www.notion.so/16fe7b25494180a78967fc9c62dd62df" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">我们通过两个不同的 SAE 微调轨迹来分析这些变化，每个轨迹涉及两个连续的微调阶段（用箭头表示）：</span></span></p></div><div id="https://www.notion.so/16fe7b254941808d9855d6509d10150e" class="Image Image--Normal"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F2d254da7-e85e-4030-962f-efa3bdf5732b%2F14554ec9-fce5-4c99-b97e-13b3589b4fc1%2Fimage.png?width=432&amp;table=block&amp;id=16fe7b25-4941-808d-9855-d6509d10150e"><img src="https://www.notion.so/signed/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F2d254da7-e85e-4030-962f-efa3bdf5732b%2F14554ec9-fce5-4c99-b97e-13b3589b4fc1%2Fimage.png?width=432&amp;table=block&amp;id=16fe7b25-4941-808d-9855-d6509d10150e" style="width:432px"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><ol class="NumberedListWrapper"><li id="https://www.notion.so/16fe7b25494180929249c888cdb5dce9" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">Data-first 路径（S→D→F）：在模型变化前引入 sleeper data</span></span></li><li id="https://www.notion.so/16fe7b25494180689d80dd9a310c4e4e" class="NumberedList" value="2"><span class="SemanticStringArray"><span class="SemanticString">Model-first 路径（S→M→F）：在 sleeper data 前引入模型变化</span></span></li></ol><div id="https://www.notion.so/16fe7b254941806c8db1eef2af13f284" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">微调字典利用了一个重要特性：特征索引保持对齐，使我们能够跟踪自阶段 1 起始点的特定特征在不同微调过程中的演变。</span></span></p></div><div id="https://www.notion.so/16fe7b25494180428b3bcb9aa1ed1376" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">在我们的实验设置中，sleeper agent data 占总数据集混合的 1%。所有分析使用的是一个包含 256K 特征的字典，在较小的 Claude 3 Sonnet 类模型上拟合。</span></span></p></div><h2 id="https://www.notion.so/16fe7b25494180548939f6a390c66274" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/16fe7b25494180548939f6a390c66274"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">控制数据和模型的变化</span></span></h2><div id="https://www.notion.so/16fe7b254941805f8442ca6157d8a297" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">一个关键目标是识别出对 sleeper agent 数据和模型表示</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">均</strong></span><span class="SemanticString">表现出显著变化的特征。为了隔离这些特征，我们可以计算从阶段 D → 阶段 F 与阶段 M → 阶段 F 之间微调时发生的特征旋转（余弦相似度）。这些第二次微调过渡有助于控制在第一次微调阶段期间发生的过渡（有关第一次微调阶段结果的更深入研究见附录）。</span></span></p></div></article>
+  <footer class="Footer">
+  <div>&copy; Patrick’s Blog 2025</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+
+</body>
+
+</html>

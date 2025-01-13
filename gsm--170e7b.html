@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffc9b3a94-67d3-4485-bdf3-5e0c0b341ebe%2FAA238E8485C55D168DCF034BC7482B61.png?table=collection&amp;id=c97ea4eb-3d30-4977-8edc-ee98d0f07149">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+
+  <title>GSM 与隐藏推理过程&nbsp;|&nbsp;Patrick’s Blog</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="GSM 与隐藏推理过程">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧶&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffc9b3a94-67d3-4485-bdf3-5e0c0b341ebe%2FAA238E8485C55D168DCF034BC7482B61.png?table=collection&amp;id=c97ea4eb-3d30-4977-8edc-ee98d0f07149"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;😀&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About me</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="categories.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📃&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Categories</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧶&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">GSM 与隐藏推理过程</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Fri, Jan 3, 2025</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/📖Note.html">📖Note</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/170e7b25494180b0a426e44a61783fdc" class="PageRoot"><div id="https://www.notion.so/170e7b2549418013a07ee00ec3793437" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/170e7b2549418003a2a2cd5d713bbd72" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">本文关注小语言模型解 GSM 问题的能力。</span></span></p></div><ol class="NumberedListWrapper"><li id="https://www.notion.so/170e7b25494180cca914c0c4f9dca9f6" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">语言模型如何学习解小学级别的数学问题？它们只是记忆了模版还是学会了类似人类的推理技能？或者它们发现了解决问题的新技能？</span></span></li><li id="https://www.notion.so/170e7b25494180a9a195d13f3b585e92" class="NumberedList" value="2"><span class="SemanticStringArray"><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">仅</em></span><span class="SemanticString">在 GSM 问题上训练的模型是只学会解这些问题，还是开发了某些更通用的智能？</span></span></li><li id="https://www.notion.so/170e7b254941803c8f3fe13c96a4685d" class="NumberedList" value="3"><span class="SemanticStringArray"><span class="SemanticString">多小的语言模型依旧能解 GSM 问题？深度（层数）比宽度（每层神经元数量）更重要吗，还是如实践者建议的只有规模重要？</span></span></li></ol><div id="https://www.notion.so/170e7b2549418035b97dee58d1adac7f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">为研究这些问题，从预训练的模型开始，在像 GSM8K 或 GPT-4 增强后的现有数据集上微调似乎很诱人。但这个方法有很大限制：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/170e7b25494180ffbafddf4ccb79ef73" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">数据污染。现有模型的预训练数据主要来自公开可用的互联网，为一堆混乱的数据。我们不知道包含了多少数学问题或其结构。关于 GSM8K 基准是否</span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">泄露到语言模型的训练数据集</em></span><span class="SemanticString">存在</span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">重大关注</em></span><span class="SemanticString">。即使确切的数据没有，预训练模型也可能已经看到几乎相同的问题（例如，具有不同数字的相同问题）。因此，这种方法无法回答问题 1-3。我们不知道模型是否真正学习了推理技能，或者它只是在训练期间记住问题模版。因此，我们</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">需要完全控制模型的预训练数据</strong></span><span class="SemanticString">，并且必须从头开始训练语言模型。</span></span></li><li id="https://www.notion.so/170e7b254941805eb1a7d81117c19184" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">解法多样性。现有的微调数据，例如 GSM8K 数据集，仅包含 7.5K GSM 问题，不足以从头开始训练模型。尽管最近的工作使用 GPT-4 来增强 GSM8K，但这对我们的目的并不足够。GPT-4 增强问题可能偏向于少量解法模版，因为原始 GSM8K 数据解法模版很少（显然，最多 8K）。</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">我们需要更大、更多样化的 GSM 问题</strong></span><span class="SemanticString">。</span></span></li></ul><div id="https://www.notion.so/170e7b25494180a5ae77ec9374f3012f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">本文引入了生成大量不同的 GSM 问题的框架，并使用数据集（从头开始）训练并测试类似 GPT2 的语言模型。在该框架中，我们关注 GSM 问题的“逻辑推理”方面，这涉及问题陈述中参数的依赖性，例如“Alice 的苹果是 Bob 的橙子和 Charles 的香蕉的总和的三倍”。我们使用合成句子来减少</span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">常识</em></span><span class="SemanticString">带来的困难，例如“一根蜡烛每小时 1 英寸地燃烧了 12 小时”（暗示蜡烛长度减少）。我们也移除了纯数学带来的困难：我们只考虑整数和 mod23 算术。</span></span></p></div><div id="https://www.notion.so/170e7b2549418085a03bdf41aa55d533" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">此外，我们的框架确保生成的数学问题是高度多样化的，且没有来自一小部分模版。即使忽略所有算术、英语、变量名和未使用的参数，我们的问题仍然有超过 90 万万亿个解法模版（参见命题 2.2），远大于 GPT2-small（100M）的大小。因此，语言模型</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">不能简单地记忆</strong></span><span class="SemanticString">解法模版来解决我们案例中的数学问题。</span></span></p></div><div id="https://www.notion.so/170e7b2549418079b108fc136be1d653" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">本文使用 GPT2 模型，但将其位置嵌入替换为旋转嵌入（RoPE）。主要贡献如下：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/170e7b2549418038991ecfa483cc30a8" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">结果 2.  我们证明了在我们的合成数据集上预训练的 GPT2 模型不仅在解决来自相同分布的数学问题方面达到了 99% 的准确率，而且在分布外泛化方面也达到了 99%，例如比训练期间看到的更长的推理长度的问题。这类似于算术中的长度泛化，然而，在我们的例子中，模型</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">从未见过与测试时长度相同的</strong></span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">任何</strong></em></span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">训练示例</strong></span><span class="SemanticString">。这意味着模型可以真正学习一些推理技能，而不是记忆解法模版。</span></span></li><li id="https://www.notion.so/170e7b25494180af92f6caa50c8061b8" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">结果 3.  重要的是，模型可以学习生成最短路径，几乎总是避免</span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">不必要的</em></span><span class="SemanticString">计算。这表明模型在生成之前</span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">制定了一个计划</em></span><span class="SemanticString">，以避免计算解决根本的数学问题所不需要的量。</span></span></li><li id="https://www.notion.so/170e7b2549418051a412dd8b0484eaaf" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">结果 4.  我们通过探针来检查模型内部状态，引入了六个探测任务来阐明模型</span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">如何</em></span><span class="SemanticString">解决数学问题。例如，我们发现模型（精神上！）在开始任何生成之前对全套必要的参数进行预处理。同样地，尽管我们在便笺簿上写下这些，但人类也进行了这种预处理。</span></span></li><li id="https://www.notion.so/170e7b2549418047a5e4e3ac9a4297f0" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">结果 5.  令人惊讶的是，模型在预训练后也学习了</span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">不必要但重要的</em></span><span class="SemanticString">技能，例如全对依赖。在提出任何问题之前，它已经（精神上！）以良好的准确度计算哪个参数依赖于哪个参数，即使</span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">解决数学问题不需要其中一些</em></span><span class="SemanticString">。注意，计算全对依赖</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">不是</strong></span><span class="SemanticString">拟合所有训练数据的解法</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">所必须的</strong></span><span class="SemanticString">技能。据我们所知，这是第一个证据表明语言模型可以学习有用的技能，而不是拟合其预训练数据所需的技能。这可能是 </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">AGI 中的 G</strong></span><span class="SemanticString"> 可以来自的初步信号。</span></span></li></ul><div id="https://www.notion.so/170e7b2549418025b37dd34bee0b90d0" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div></article>
+  <footer class="Footer">
+  <div>&copy; Patrick’s Blog 2025</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+
+</body>
+
+</html>
