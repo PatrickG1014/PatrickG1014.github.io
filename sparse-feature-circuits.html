@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffc9b3a94-67d3-4485-bdf3-5e0c0b341ebe%2FAA238E8485C55D168DCF034BC7482B61.png?table=collection&amp;id=c97ea4eb-3d30-4977-8edc-ee98d0f07149">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+
+  <title>Sparse Feature Circuits&nbsp;|&nbsp;Patrick’s Blog</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Sparse Feature Circuits">
+  
+    <meta name="description" content="Sparse Feature Circuits: 发现并编辑语言模型中可解释的因果图">
+    <meta property="og:description" content="Sparse Feature Circuits: 发现并编辑语言模型中可解释的因果图">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;☂️&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffc9b3a94-67d3-4485-bdf3-5e0c0b341ebe%2FAA238E8485C55D168DCF034BC7482B61.png?table=collection&amp;id=c97ea4eb-3d30-4977-8edc-ee98d0f07149"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;😀&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About me</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="categories.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📃&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Categories</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;☂️&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">Sparse Feature Circuits</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Tue, Jan 14, 2025</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/📖 Note.html">📖 Note</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--red">
+            <a href="tag/LLM.html">LLM</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--blue">
+            <a href="tag/Interpretability.html">Interpretability</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+            <a href="tag/Causal.html">Causal</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/17be7b254941802f92f5d02596d9d9ae" class="PageRoot"><div id="https://www.notion.so/17be7b2549418005b2c4d342b4a446bf" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Sparse Feature Circuits: 发现并编辑语言模型中可解释的因果图</strong></span></span></p></div><ul id="https://www.notion.so/17be7b2549418091ad3ae0db1752948e" class="ColorfulBlock ColorfulBlock--ColorGray TableOfContents"><li class="TableOfContents__Item"><a href="#https://www.notion.so/17be7b2549418023add1c13178d905d9"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">摘要</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/17be7b254941803091d3c171c2da91a1"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">1  引言</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/17be7b25494180d7a167d319a9964afb"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">2  形式化</span></span></div></a></li></ul><h2 id="https://www.notion.so/17be7b2549418023add1c13178d905d9" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/17be7b2549418023add1c13178d905d9"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">摘要</span></span></h2><div id="https://www.notion.so/17be7b254941809b8079e791c682535f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">我们介绍了发现和应用</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">稀疏特征电路</strong></span><span class="SemanticString">的方法。这些电路是因果相关的人类可解释特征的子网络，用于解释语言模型的行为。之前工作中识别的电路由多义性和难以解释的单位（如注意力头或神经元）组成，因此不适合许多下游应用。相比之下，稀疏特征电路能够深入理解神经网络中未预料的机制。由于它们基于细粒度单元，稀疏特征电路对下游任务非常有用：我们提出了 SHIFT，通过去掉人类认为与任务无关的特征来改善分类器的泛化能力。最后，我们通过为自动发现的模型行为发现数千个稀疏特征电路，展示了一个完全无监督和可扩展的可解释性流程。</span></span></p></div><h2 id="https://www.notion.so/17be7b254941803091d3c171c2da91a1" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/17be7b254941803091d3c171c2da91a1"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">1  引言</span></span></h2><div id="https://www.notion.so/17be7b2549418080a635fb73413acaf8" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">可解释性研究的关键挑战在于以可扩展的方式解释神经网络（NNs）许多意想不到的行为。最近的许多研究是通过粗粒度模型组件来解释神经网络的行为，例如通过涉及某些归纳头在上下文学习中的作用或在事实回忆中的MLP模块。然而，这些组件通常是多义的，且难以解释，使得将机制上的见解应用于下游任务变得困难。另一方面，先前基于细粒度单元分析行为的方法试图使用研究者设计的数据将模型内部与研究者指定的机制假说相匹配。这些方法并不适合许多情况下，研究者无法预先预测模型如何内部实现其惊人行为。</span></span></p></div><div id="https://www.notion.so/17be7b2549418059ac05c51de09964e3" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">我们提出使用扮演狭窄、可解释角色的细粒度组件来解释模型行为。为此，我们需要解决两个挑战：首先，我们必须识别适当的细粒度分析单元，因为像神经元这样的明显选择往往难以解释，而通过线性探测等监督方法发现的单元则需预先存在的假设。其次，我们必须解决在大量细粒度单元中搜索因果电路所带来的可扩展性问题。</span></span></p></div><div id="https://www.notion.so/17be7b25494180769ae8f4d2213ba758" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">我们利用在神经网络可解释性方面的词典学习的最近进展来解决第一个挑战。具体而言，我们使用</span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">稀疏自编码器</strong></mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow">（SAEs）</mark></span><span class="SemanticString">来识别表示人类可解释概念的语言模型潜在空间的方向。然后，为了应对可扩展性挑战，我们采用</span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow">线性近似</mark></span><span class="SemanticString">，以高效识别与模型行为最具因果关联的 SAE 特征，以及这些特征之间的连接。最终，我们得到了一个</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">稀疏特征电路</strong></span><span class="SemanticString">，以解释模型行为是如何通过细粒度的人类可解释单元之间的交互而产生的。</span></span></p></div><div id="https://www.notion.so/17be7b2549418075bc4bc7e2de450e8a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">稀疏特征电路可以在下游应用中有效使用。我们介绍了一种技术，称为稀疏人类可解释特征修剪（SHIFT; §4），通过外科手术般地去除对非预期信号的敏感性，从而改变语言模型分类器的泛化能力。与之前关于虚假线索去除的工作不同——该工作利用消歧的数据隔离出虚假信号——SHIFT 利用可解释性和人类判断来识别非预期信号。因此，我们通过在最坏情况下去偏见分类器来展示 SHIFT，在这种情况下，非预期信号（性别）与目标标签（职业）有着完美的预测关系。</span></span></p></div><div id="https://www.notion.so/17be7b25494180c7bbd9e3553930c9f0" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">最后，我们通过 Michaud 等人 (2023) 提出的聚类方法，自动发现数千种狭窄的语言模型行为（例如，将“to”预测为不定式宾语或在日期中预测逗号），并随后自动发现这些行为的特征电路，展示了我们方法的可扩展性（§5）。我们的贡献总结如下（图 1）：</span></span></p></div><ol class="NumberedListWrapper"><li id="https://www.notion.so/17be7b254941808bb9e0c0ccc0261404" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">一种可扩展的方法来发现稀疏</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">特征电路</strong></span><span class="SemanticString">。我们通过在一系列主谓一致任务上发现和评估特征电路来验证我们的方法。</span></span></li><li id="https://www.notion.so/17be7b25494180d08040ecda0559b2ef" class="NumberedList" value="2"><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">SHIFT</strong></span><span class="SemanticString">，一种去除语言模型分类器对非预期信号敏感性的技术，即使没有数据来隔离这些信号。</span></span></li><li id="https://www.notion.so/17be7b25494180ebb448f837e960e029" class="NumberedList" value="3"><span class="SemanticStringArray"><span class="SemanticString">一个</span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">完全无监督的</em></span><span class="SemanticString">流程，用于计算数千种自动发现的语言模型行为的特征电路，相关信息可在 </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="http://feature-circuits.xyz">feature-circuits.xyz</a></span><span class="SemanticString"> 查看。</span></span></li></ol><div id="https://www.notion.so/17be7b254941802a9aabd499a466ac39" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">本文将与源代码、数据以及训练好的自编码器一同发布。</span></span></p></div><h2 id="https://www.notion.so/17be7b25494180d7a167d319a9964afb" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/17be7b25494180d7a167d319a9964afb"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">2  形式化</span></span></h2><div id="https://www.notion.so/17be7b25494180308dcdd618111cfca4" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div></article>
+  <footer class="Footer">
+  <div>&copy; Patrick’s Blog 2025</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+
+</body>
+
+</html>
